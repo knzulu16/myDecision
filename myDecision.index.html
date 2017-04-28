@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/myDecision.css">
+    <script type="text/javascript" src="handlebars/handlebars-v4.0.5.js"></script>
+    <title>MyDecision</title>
+  </head>
+  <body>
+    <h1>Khayelitsha Train Route</h2>
+  <script id="transportTemplate" type="text/x-handlebars-template">
+            <table>
+               <thead>
+               <th>DepartStation</th>
+               <th>DepartTime</th>
+               <th>ArrivalStation</th>
+               <th>ArrivalTime</th>
+               </thead>
+               <tbody>
+               {{#each route}}
+              <tr>
+              <td>{{DepartStation}}</td>
+              <td>{{DepartTime}}</td>
+              <td>{{ArrivalStation}}</td>
+              <td>{{ArrivalTime}}</td>
+              </tr>
+             {{/each}}
+             </tbody>
+            </table>
+             <input id="searchRoute" type="button" value='search'>Route Search</input>
+
+
+           <select class="DepStation">
+             <option class="DepartStationTemp" value="" >Select Depart station</option>
+             {{#each route}}
+             <option class="DepartStationTemp" value="{{DepartStation}}">{{DepartStation}}</option>
+             {{/each}}
+          </select>
+
+          <select class="DepTime">
+             <option class="DepartTimeTemp" value="">Select Depart Time</option>
+             {{#each route}}
+             <option class="DepartTimeTemp" value="{{DepartTime}}">{{DepartTime}}</option>
+             {{/each}}
+          </select>
+
+          <select class="ArrStation">
+             <option class="ArrivalStationTemp" value="">Select Arrival Station</option>
+             {{#each route}}
+             <option class="ArrivalStationTemp" value="{{ArrivalStation}}">{{ArrivalStation}}</option>
+             {{/each}}
+          </select>
+
+          <select class="ArrTime">
+             <option class="ArrivalTimeTemp" value="">Select Arrival Time</option>
+             {{#each data}}
+             <option class="ArrivalTimeTemp" value="{{ArrivalTime}}">{{ArrivalTime}}</option>
+             {{/each}}
+          </select>
+      </script>
+      <div class="routeDisplay"></div>
+  </body>
+  <script src="myDecision.js" charset="utf-8"></script>
+
+</html>

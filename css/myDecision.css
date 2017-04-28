@@ -1,0 +1,31 @@
+body{
+  background-color: grey;
+}
+
+.menu li: hover {
+  color: rgba(0,0,204,1);
+
+}
+.sub{
+  visibility: hidden;
+}
+
+.menu li:hover .sub{
+  visibility:visible;
+}
+.sub li{
+  border-top:1px solid rgba(0,0,0,1);
+}
+.menu{
+  list-style: none;
+}
+.menu li{
+  display:block;
+  height:50px;
+  width: 125px;
+  float:left;
+  line-height:50px;
+  text-align: center;
+  border-right:1px solid #000;
+  font-family: 'Francois one', sans-serif;
+}
