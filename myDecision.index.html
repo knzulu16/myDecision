@@ -28,36 +28,54 @@
              {{/each}}
              </tbody>
             </table>
-             <input id="searchRoute" type="button" value='search'>Route Search</input>
-
-
-           <select class="DepStation">
+             <button id="searchRoute" type="submit" value='submi'>Route Search</button>
+             <br></br>
+          <select class="DepStation">
              <option class="DepartStationTemp" value="" >Select Depart station</option>
              {{#each route}}
              <option class="DepartStationTemp" value="{{DepartStation}}">{{DepartStation}}</option>
              {{/each}}
           </select>
-
+          <br></br>
           <select class="DepTime">
              <option class="DepartTimeTemp" value="">Select Depart Time</option>
              {{#each route}}
              <option class="DepartTimeTemp" value="{{DepartTime}}">{{DepartTime}}</option>
              {{/each}}
           </select>
-
+                    <br></br>
           <select class="ArrStation">
              <option class="ArrivalStationTemp" value="">Select Arrival Station</option>
              {{#each route}}
              <option class="ArrivalStationTemp" value="{{ArrivalStation}}">{{ArrivalStation}}</option>
              {{/each}}
           </select>
-
+          <br></br>
           <select class="ArrTime">
              <option class="ArrivalTimeTemp" value="">Select Arrival Time</option>
-             {{#each data}}
+             {{#each route}}
              <option class="ArrivalTimeTemp" value="{{ArrivalTime}}">{{ArrivalTime}}</option>
              {{/each}}
           </select>
+          <br></br>
+
+          <button type="submit" value="submit" name='submitButton' onclick="" id="search">Search</button>
+          <br></br>
+          <input type="text"id="DepartPlace"  name="DepartStation" placeholder="Enter Depart Station"value="{{DepartStation}}">
+          <br></br>
+          <input type="text" id="DepartTime" name="DepartTime" placeholder="Enter Depart Time" value="{{DepartTime}}">
+          <br></br>
+          <input type="text"id="ArrivalPlace" name="ArrivalPlace" placeholder="Enter Arrival Station" value="{{ArrivalPlace}}">
+          <br></br>
+          <input type="text" id="ArrivalTime" name="ArrivalTime" placeholder="Enter Arrival Time" value="{{ArrivalTime}}">
+          <br></br>
+          <button type="submit" value="submit" name='submitButton' onclick="updateRoute()" id="search">Update Time</button>
+
+
+
+
+
+
       </script>
       <div class="routeDisplay"></div>
   </body>

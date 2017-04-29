@@ -1,9 +1,21 @@
+
 var transportTemplate=document.querySelector('#transportTemplate');
+var DepartPlace=document.querySelector('#DepartPlace');
+var DepartTime=document.querySelector('#DepartTime');
+var ArrivalPlace=document.querySelector('#ArrivalPlace');
+var ArrivalTime=document.querySelector('#ArrivalTime');
+var DepartStationTemp=document.querySelector('.DepartStationTemp');
+var DepartTimeTemp=document.querySelector('.DepartTimeTemp');
+var ArrivalStationTemp=document.querySelector('.ArrivalStationTemp');
+var ArrivalTimeTemp=document.querySelector('.ArrivalTimeTemp');
+var arrTime=document.querySelector('.ArrTime');
+var TimeUpdate=document.querySelector('.TimeUpdate');
 var myTable=document.querySelector('#myTable');
 var searchRoute=document.querySelector('#searchRoute');
 var routeDisplay=document.querySelector('.routeDisplay');
 var DepStation=document.querySelector('.DepStation');
-var DepartStationTemp=document.querySelector('.DepartStationTemp');
+var transportTemplate=document.querySelector('#transportTemplate');
+var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
 
 
 var RouteSearch=[{
@@ -63,7 +75,51 @@ DepartTime:'09:06',
 ArrivalStation:'Esplanade',
 ArrivalTime:'09:11'}];
 
-var transportTemplate=document.querySelector('#transportTemplate');
-var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
 var results = TemplateInstance({route:RouteSearch});
 routeDisplay.innerHTML+= results;
+
+function updateRoute(){
+
+RouteSearch.push({
+  DepartStation:document.querySelector('#DepartPlace').value,
+  DepartTime:document.querySelector('#DepartTime').value,
+  ArrivalStation:document.querySelector('#ArrivalPlace').value,
+  ArrivalTime:document.querySelector('#ArrivalTime').value,
+
+});
+
+var results = TemplateInstance({route:RouteSearch});
+routeDisplay.innerHTML = results;
+
+}
+
+
+
+// searchRoute.addEventListener('click',function(){
+//
+// });
+
+
+
+
+
+// var attempt = 3; // Variable to count number of attempts.
+// // Below function Executes on click of login button.
+// function validate(){
+// var username = document.getElementByName("username").value;
+// var password = document.getElementByName("password").value;
+// if ( username == "Nzulu" && password == "abc&123"){
+// alert ("Login successfully");
+// window.location = "success.html"; // Redirecting to other page.
+// return false;
+// }
+// else{
+// attempt --;// Decrementing by one.
+// alert("You have left "+attempt+" attempt;");
+// // Disabling fields after 3 attempts.
+// if( attempt == 0){
+// document.getElementByName("username").disabled = true;
+// document.getElementByName("pass").disabled = true;
+// document.getElementByName("submit").disabled = true;
+// return false;
+// }
