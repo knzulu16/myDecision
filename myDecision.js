@@ -1,5 +1,5 @@
-
 var transportTemplate=document.querySelector('#transportTemplate');
+var timeTable=document.querySelector('.timeTable');
 var DepartPlace=document.querySelector('#DepartPlace');
 var DepartTime=document.querySelector('#DepartTime');
 var ArrivalPlace=document.querySelector('#ArrivalPlace');
@@ -11,10 +11,13 @@ var ArrivalTimeTemp=document.querySelector('.ArrivalTimeTemp');
 var arrTime=document.querySelector('.ArrTime');
 var TimeUpdate=document.querySelector('.TimeUpdate');
 var myTable=document.querySelector('#myTable');
-var searchRoute=document.querySelector('#searchRoute');
 var routeDisplay=document.querySelector('.routeDisplay');
 var DepStation=document.querySelector('.DepStation');
+var UpdateTimeTemp=document.querySelector('#UpdateTimeTemp');
+var dropDwnTemp=document.querySelector('#dropDwnTemp');
 var transportTemplate=document.querySelector('#transportTemplate');
+var UpdateTime=document.querySelector('.UpdateTime');
+var dropDown=document.querySelector('.dropDown');
 var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
 
 
@@ -75,11 +78,34 @@ DepartTime:'09:06',
 ArrivalStation:'Esplanade',
 ArrivalTime:'09:11'}];
 
-var results = TemplateInstance({route:RouteSearch});
-routeDisplay.innerHTML+= results;
+var searchRoute=document.querySelector('#searchRoute');
+//alert(searchRoute);
+var showRoute=document.querySelector('.showRoute');
+searchRoute.addEventListener('click',function(){
+  var results = TemplateInstance({route:RouteSearch});
+  routeDisplay.innerHTML= results;
+
+});
+var UpdateTimeTemp=document.querySelector('#UpdateTimeTemp');
+var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
+var result = TempInstance({route:RouteSearch});
+UpdateTime.innerHTML= result;
+
+var dropDwnTemp=document.querySelector('#dropDwnTemp');
+var InstanceTemp = Handlebars.compile(dropDwnTemp.innerHTML);
+var product = InstanceTemp({data:RouteSearch});
+dropDown.innerHTML= product;
 
 function updateRoute(){
+var DepartStation='';
+var DepartTime='';
+var ArrivalStation='';
+var ArrivalTime='';
 
+  if(DepartStation.value!== ''
+      &&   DepartTime.value!== ''
+    && ArrivalStation.value!==''
+  &&   ArrivalTime.value!==''){
 RouteSearch.push({
   DepartStation:document.querySelector('#DepartPlace').value,
   DepartTime:document.querySelector('#DepartTime').value,
@@ -87,17 +113,38 @@ RouteSearch.push({
   ArrivalTime:document.querySelector('#ArrivalTime').value,
 
 });
+}
+var result = TempInstance({route:RouteSearch});
+UpdateTime.innerHTML = result;
 
-var results = TemplateInstance({route:RouteSearch});
-routeDisplay.innerHTML = results;
+}
 
+function routeFilter(){
+var routeDisplay=document.querySelector('.routeDisplay');
+var selectedDepStation=document.querySelector('.DepStation');
+var selectedDepTime=document.querySelector('.DepTime');
+var selectedArrStation=document.querySelector('.ArrStation');
+var selectedArrTime=document.querySelector('.ArrTime');
+
+
+var routeList=[];
+for(var i=0;i<RouteSearch.length;i++){
+  var routes=RouteSearch[i];
+  if(selectedDepStation.value==routes.DepartStation
+    && selectedDepTime.value==routes.DepartTime){
+    routeList.push(routes);
+  }
+}
+  var product=InstanceTemp({data:routeList});
+  document.querySelector('.dropDown').innerHTML=product;
 }
 
 
 
-// searchRoute.addEventListener('click',function(){
-//
-// });
+
+
+
+
 
 
 
