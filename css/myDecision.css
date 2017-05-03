@@ -1,5 +1,5 @@
 body{
-  background-color:white;
+  background-color:#2c3e50;
 }
 .myImage{
   height: 400px;
@@ -7,8 +7,13 @@ body{
   margin-left:20%;
 }
 h1{
-  text-align: center;
+  margin-left:30%;
+
+  /*background-color: #2c3e50;*/
+  margin:auto;
+  color:white;
 }
+
 
 .menu li: hover {
   color: rgba(0,0,204,1);
@@ -17,3 +22,30 @@ h1{
 .sub{
   visibility: hidden;
 }
+form{
+  margin-left: 50%;
+  margin-top: -15;
+  width: 50%;
+  color:white;
+
+}
+button{
+  color:white;
+}
+.update{
+  color: #00FF00;
+ font-family:arial;
+ font-size: 4pt;
+}
+
+
+table {
+    margin: 10px;
+    color: #fff;
+    margin-left:10%;
+
+}
+th, td {
+    padding: 5px;
+    border: 1px solid #999;
+  }

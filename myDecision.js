@@ -19,6 +19,7 @@ var transportTemplate=document.querySelector('#transportTemplate');
 var UpdateTime=document.querySelector('.UpdateTime');
 var dropDown=document.querySelector('.dropDown');
 var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
+var loginBtn=document.querySelector('#loginBtn');
 
 
 var RouteSearch=[{
@@ -88,13 +89,17 @@ searchRoute.addEventListener('click',function(){
 });
 var UpdateTimeTemp=document.querySelector('#UpdateTimeTemp');
 var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
-var result = TempInstance({route:RouteSearch});
-UpdateTime.innerHTML= result;
+
+loginBtn.addEventListener('click',function(){
+  var result = TempInstance({route:RouteSearch});
+  routeDisplay.innerHTML= result;
+});
+
 
 var dropDwnTemp=document.querySelector('#dropDwnTemp');
 var InstanceTemp = Handlebars.compile(dropDwnTemp.innerHTML);
 var product = InstanceTemp({data:RouteSearch});
-dropDown.innerHTML= product;
+routeDisplay.innerHTML= product;
 
 function updateRoute(){
 var DepartStation='';
@@ -114,8 +119,10 @@ RouteSearch.push({
 
 });
 }
+
+// addExisting(RouteSearch);
 var result = TempInstance({route:RouteSearch});
-UpdateTime.innerHTML = result;
+routeDisplay.innerHTML = result;
 
 }
 
@@ -135,18 +142,51 @@ for(var i=0;i<RouteSearch.length;i++){
     routeList.push(routes);
   }
 }
-  var product=InstanceTemp({data:routeList});
-  document.querySelector('.dropDown').innerHTML=product;
+  // var product=InstanceTemp({data:routeList});
+  // document.querySelector('.routeDisplay').innerHTML=product;
+  var results = TemplateInstance({route:routeList});
+  routeDisplay.innerHTML= results;
 }
 
 
 
 
+function login(){
+  var form='';
+  var username='';
+  var password='';
+  var usernameValue = username.value;
+  var passwordValue = password.value;
 
+if(username.value!== ''
+ && password.value!== ''){
+   username.value='';
+   password.value='';
+}
+else  if(username.value=="Admin" && password.value=="knzulu"){
+    routeDisplay.innerHTML=update;
 
+  }
+  else{
+    alert("error password or username")
+}
 
+}
 
-
+function addExisting(motion){
+  var list=[];
+  var listMap={};
+  for(var i=0;i<motion;i++){
+    var array=motion[i];
+    if(listMap[array.DepartTime]===undefined){
+      listMap[array.DepartTime]=array.DepartTime;
+      list.push(array.DepartTime);
+    }
+    var result = TempInstance({route:list});
+    routeDisplay.innerHTML = result;
+  }
+  addExisting(RouteSearch);
+}
 
 
 

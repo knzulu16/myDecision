@@ -9,11 +9,10 @@
   </head>
   <body>
     <h1>Khayelitsha Train Route</h1>
-    <form name="login">
-  Username<input type="text" name="userid"/>
-  Password<input type="password" name="pswrd"/>
-  <input type="button"  value="Login"/>
-  
+  <form name="login" class='myForm'>
+  Username<input type="text" class='user' name="userid"/>
+  Password<input type="password" class='user' name="pswrd"/>
+  <button type="button" id="loginBtn" onclick='login()' value="Login">Login</button>
   </form>
     <br></br>
       <img class="myImage" src=Cape-Town-train.jpg />
@@ -38,7 +37,7 @@
              </tbody>
             </table>
   </script>
-             <br></br>
+
   <script id="dropDwnTemp" type="text/x-handlebars-template">
 
           <select class="DepStation">
@@ -47,33 +46,33 @@
              <option class="DepartStationTemp" value="{{DepartStation}}">{{DepartStation}}</option>
              {{/each}}
           </select>
-          <br></br>
+
           <select class="DepTime">
              <option class="DepartTimeTemp" value="">Select Depart Time</option>
              {{#each data}}
              <option class="DepartTimeTemp" value="{{DepartTime}}">{{DepartTime}}</option>
              {{/each}}
           </select>
-                    <br></br>
+
           <select class="ArrStation">
              <option class="ArrivalStationTemp" value="">Select Arrival Station</option>
              {{#each data}}
              <option class="ArrivalStationTemp" value="{{ArrivalStation}}">{{ArrivalStation}}</option>
              {{/each}}
           </select>
-          <br></br>
+
           <select class="ArrTime">
              <option class="ArrivalTimeTemp" value="">Select Arrival Time</option>
              {{#each data}}
              <option class="ArrivalTimeTemp" value="{{ArrivalTime}}">{{ArrivalTime}}</option>
              {{/each}}
           </select>
-          <br></br>
+
           <button type="submit" value="submit" name='submitButton' onclick="routeFilter()" id="search">Search</button>
           <br></br>
   </script>
   <script id="UpdateTimeTemp" type="text/x-handlebars-template">
-
+<div class='Update'>
           <input type="text"id="DepartPlace"  name="DepartStation" placeholder="Enter Depart Station"value="{{DepartStation}}">
           <br></br>
           <input type="text" id="DepartTime" name="DepartTime" placeholder="Enter Depart Time" value="{{DepartTime}}">
@@ -83,6 +82,7 @@
           <input type="text" id="ArrivalTime" name="ArrivalTime" placeholder="Enter Arrival Time" value="{{ArrivalTime}}">
           <br></br>
           <button type="submit" value="submit" name='submitButton' onclick="updateRoute()" id="search">Update Time</button>
+        </div>
   </script>
 
       <button id="searchRoute" type="submit" value='submit'>Route Search</button>
