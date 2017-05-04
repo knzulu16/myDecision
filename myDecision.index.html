@@ -8,12 +8,19 @@
     <title>MyDecision</title>
   </head>
   <body>
+  <div class="heading">
+    <div class='header'>
     <h1>Khayelitsha Train Route</h1>
-  <form name="login" class='myForm'>
-  Username<input type="text" class='user' name="userid"/>
-  Password<input type="password" class='user' name="pswrd"/>
-  <button type="button" id="loginBtn" onclick='login()' value="Login">Login</button>
-  </form>
+  </div>
+  <div class='myForm'>
+    <form name="login" class='myForm'>
+    Username:<input type="text" class='user' name="userid"/>
+    Password:<input type="password" class='user' name="pswrd"/>
+    <button type="button" id="loginBtn" onclick='login()' value="">Login</button>
+    </form>
+  </div>
+  <br></br>
+</div>
     <br></br>
       <img class="myImage" src=Cape-Town-train.jpg />
       <br></br>
@@ -24,6 +31,8 @@
                <th>DepartTime</th>
                <th>ArrivalStation</th>
                <th>ArrivalTime</th>
+
+
                </thead>
                <tbody>
                {{#each route}}
@@ -32,6 +41,7 @@
               <td>{{DepartTime}}</td>
               <td>{{ArrivalStation}}</td>
               <td>{{ArrivalTime}}</td>
+
               </tr>
              {{/each}}
              </tbody>
@@ -67,6 +77,7 @@
              <option class="ArrivalTimeTemp" value="{{ArrivalTime}}">{{ArrivalTime}}</option>
              {{/each}}
           </select>
+
 
           <button type="submit" value="submit" name='submitButton' onclick="routeFilter()" id="search">Search</button>
           <br></br>

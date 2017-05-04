@@ -22,62 +22,77 @@ var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
 var loginBtn=document.querySelector('#loginBtn');
 
 
-var RouteSearch=[{
-  DepartStation:'SiteC',
+var RouteSearch=[
+
+  {DepartStation:'SiteC',
   DepartTime:'07:30',
   ArrivalStation:'Mandalay',
-  ArrivalTime:'07:37'
+  ArrivalTime:'07:37',
 
 },
 {DepartStation:'Mandalay',
 DepartTime:'07:43',
 ArrivalStation:'StockRoad',
-ArrivalTime:'07:53'
+ArrivalTime:'07:53',
+
 },
 {DepartStation:'StoakRoad',
 DepartTime:'07:56',
 ArrivalStation:'Philipi',
-ArrivalTime:'08:04'
+ArrivalTime:'08:04',
+
 },
 {DepartStation:'Philipi',
 DepartTime:'08:07',
 ArrivalStation:'Nyanga',
-ArrivalTime:'08:14'},
+ArrivalTime:'08:14',},
 
 {DepartStation:'Nyanga',
 DepartTime:'08:17',
 ArrivalStation:'Hiedeveld',
-ArrivalTime:'08:22'},
+ArrivalTime:'08:22',
+},
 
 {DepartStation:'Hiedeveld',
 DepartTime:'08:25',
 ArrivalStation:'Netreg',
-ArrivalTime:'08:30'},
+ArrivalTime:'08:30',
+},
 
 {DepartStation:'Netreg',
 DepartTime:'08:33',
 ArrivalStation:'Bontuiwel',
-ArrivalTime:'08:38'},
+ArrivalTime:'08:38',
+},
 {
   DepartStation:'Bontuiwel',
   DepartTime:'08:41',
   ArrivalStation:'Langa',
-  ArrivalTime:'08:46'
+  ArrivalTime:'08:46',
+
 },
 {DepartStation:'Langa',
 DepartTime:'08:49',
 ArrivalStation:'Mutual',
-ArrivalTime:'08:54'},
+ArrivalTime:'08:54',},
 
 {DepartStation:'Mutual',
 DepartTime:'08:57',
 ArrivalStation:'Yiesteplart',
-ArrivalTime:'09:03'},
+ArrivalTime:'09:03',
+},
 
 {DepartStation:'Yiesteplart',
 DepartTime:'09:06',
 ArrivalStation:'Esplanade',
-ArrivalTime:'09:11'}];
+ArrivalTime:'09:11',
+},
+
+{DepartStation:'Esplanade',
+DepartTime:'09:14',
+ArrivalStation:'Cape Town',
+ArrivalTime:'09:25',
+}];
 
 var searchRoute=document.querySelector('#searchRoute');
 //alert(searchRoute);
@@ -102,25 +117,32 @@ var product = InstanceTemp({data:RouteSearch});
 routeDisplay.innerHTML= product;
 
 function updateRoute(){
+
 var DepartStation='';
 var DepartTime='';
 var ArrivalStation='';
 var ArrivalTime='';
 
-  if(DepartStation.value!== ''
-      &&   DepartTime.value!== ''
-    && ArrivalStation.value!==''
-  &&   ArrivalTime.value!==''){
+for(var i=0;i<RouteSearch;i++){
+
+  if(DepartStation.value!== '' && RouteSearch[i].DepartStation === undefined
+      &&   DepartTime.value!== '' &&RouteSearch[i].DepartTime===undefined
+    && ArrivalStation.value!=='' && RouteSearch[i].ArrivalStation===undefined
+  &&   ArrivalTime.value!=='' &&RouteSearch[i].ArrivalTime===undefined){
+
 RouteSearch.push({
   DepartStation:document.querySelector('#DepartPlace').value,
   DepartTime:document.querySelector('#DepartTime').value,
   ArrivalStation:document.querySelector('#ArrivalPlace').value,
   ArrivalTime:document.querySelector('#ArrivalTime').value,
 
+
 });
+}
 }
 
 // addExisting(RouteSearch);
+
 var result = TempInstance({route:RouteSearch});
 routeDisplay.innerHTML = result;
 
@@ -187,6 +209,7 @@ function addExisting(motion){
   }
   addExisting(RouteSearch);
 }
+
 
 
 
