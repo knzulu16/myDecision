@@ -118,28 +118,25 @@ routeDisplay.innerHTML= product;
 
 function updateRoute(){
 
-var DepartStation='';
-var DepartTime='';
-var ArrivalStation='';
-var ArrivalTime='';
+for(var i=0;i<RouteSearch.length;i++){
+  var updated = false;
+   if(RouteSearch[i].DepartStation == document.querySelector('#DepartPlace').value && RouteSearch[i].ArrivalStation == document.querySelector('#ArrivalPlace').value){
+          RouteSearch[i].DepartTime = document.querySelector('#DepartTime').value;
+          RouteSearch[i].ArrivalTime = document.querySelector('#ArrivalTime').value
+          updated = true;
+    }
 
-for(var i=0;i<RouteSearch;i++){
-
-  if(DepartStation.value!== '' && RouteSearch[i].DepartStation === undefined
-      &&   DepartTime.value!== '' &&RouteSearch[i].DepartTime===undefined
-    && ArrivalStation.value!=='' && RouteSearch[i].ArrivalStation===undefined
-  &&   ArrivalTime.value!=='' &&RouteSearch[i].ArrivalTime===undefined){
-
-RouteSearch.push({
-  DepartStation:document.querySelector('#DepartPlace').value,
-  DepartTime:document.querySelector('#DepartTime').value,
-  ArrivalStation:document.querySelector('#ArrivalPlace').value,
-  ArrivalTime:document.querySelector('#ArrivalTime').value,
-
-
-});
 }
+if(updated == false){
+  RouteSearch.push({
+    DepartStation:document.querySelector('#DepartPlace').value,
+    DepartTime:document.querySelector('#DepartTime').value,
+    ArrivalStation:document.querySelector('#ArrivalPlace').value,
+    ArrivalTime:document.querySelector('#ArrivalTime').value,
+  });
 }
+
+
 
 // addExisting(RouteSearch);
 
