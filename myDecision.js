@@ -106,8 +106,14 @@ var UpdateTimeTemp=document.querySelector('#UpdateTimeTemp');
 var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
 
 loginBtn.addEventListener('click',function(){
+  if(validate()){
   var result = TempInstance({route:RouteSearch});
   routeDisplay.innerHTML= result;
+}
+
+else{
+  ("error password or username")
+}
 });
 
 
@@ -170,42 +176,35 @@ for(var i=0;i<RouteSearch.length;i++){
 
 
 
-function login(){
-  var form='';
-  var username='';
-  var password='';
-  var usernameValue = username.value;
-  var passwordValue = password.value;
+function validate(){
+  var flag=true;
 
-if(username.value!== ''
- && password.value!== ''){
-   username.value='';
-   password.value='';
-}
-else  if(username.value=="Admin" && password.value=="knzulu"){
-    routeDisplay.innerHTML=update;
+  if(document.querySelector('#userid').value!=='Admin'){
 
+    flag=false;
   }
-  else{
-    alert("error password or username")
-}
-
-}
-
-function addExisting(motion){
-  var list=[];
-  var listMap={};
-  for(var i=0;i<motion;i++){
-    var array=motion[i];
-    if(listMap[array.DepartTime]===undefined){
-      listMap[array.DepartTime]=array.DepartTime;
-      list.push(array.DepartTime);
-    }
-    var result = TempInstance({route:list});
-    routeDisplay.innerHTML = result;
+  if(document.querySelector('#passwrd').value!=='123'){
+    flag=false;
   }
-  addExisting(RouteSearch);
+
+  console.log("Login Status: "+flag);
+  return flag;
 }
+
+// function addExisting(motion){
+//   var list=[];
+//   var listMap={};
+//   for(var i=0;i<motion;i++){
+//     var array=motion[i];
+//     if(listMap[array.DepartTime]===undefined){
+//       listMap[array.DepartTime]=array.DepartTime;
+//       list.push(array.DepartTime);
+//     }
+//     var result = TempInstance({route:list});
+//     routeDisplay.innerHTML = result;
+//   }
+//   addExisting(RouteSearch);
+// }
 
 
 
