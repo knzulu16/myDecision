@@ -112,7 +112,7 @@ loginBtn.addEventListener('click',function(){
 }
 
 else{
-  ("error password or username")
+("error password or username")
 }
 });
 
@@ -165,7 +165,25 @@ for(var i=0;i<RouteSearch.length;i++){
   if(selectedDepStation.value==routes.DepartStation
     && selectedDepTime.value==routes.DepartTime){
     routeList.push(routes);
+
+
   }
+  if(selectedDepTime.value==routes.DepartTime){
+    routeList.push(routes);
+    
+  }
+if(selectedDepStation.value==routes.DepartStation){
+  routeList.push(routes);
+}
+if(selectedArrStation.value==routes.ArrivalStation){
+  routeList.push(routes);
+
+}
+if(selectedArrTime.value==routes.ArrivalTime){
+  routeList.push(routes);
+
+}
+
 }
   // var product=InstanceTemp({data:routeList});
   // document.querySelector('.routeDisplay').innerHTML=product;
@@ -179,6 +197,8 @@ for(var i=0;i<RouteSearch.length;i++){
 function validate(){
   var flag=true;
 
+
+
   if(document.querySelector('#userid').value!=='Admin'){
 
     flag=false;
@@ -190,6 +210,7 @@ function validate(){
   console.log("Login Status: "+flag);
   return flag;
 }
+
 
 // function addExisting(motion){
 //   var list=[];
