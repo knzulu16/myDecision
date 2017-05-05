@@ -106,6 +106,7 @@ var UpdateTimeTemp=document.querySelector('#UpdateTimeTemp');
 var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
 
 loginBtn.addEventListener('click',function(){
+  validate()
   var result = TempInstance({route:RouteSearch});
   routeDisplay.innerHTML= result;
 });
@@ -168,29 +169,40 @@ for(var i=0;i<RouteSearch.length;i++){
 }
 
 
+function validate(){
+  var flag=true;
+  if(document.querySelector('#userid').value!=='Admin'){
 
-
-function login(){
-  var form='';
-  var username='';
-  var password='';
-  var usernameValue = username.value;
-  var passwordValue = password.value;
-
-if(username.value!== ''
- && password.value!== ''){
-   username.value='';
-   password.value='';
-}
-else  if(username.value=="Admin" && password.value=="knzulu"){
-    routeDisplay.innerHTML=update;
-
+    flag=false;
   }
-  else{
-    alert("error password or username")
+  if(document.querySelector('#passwrd').value!=='123'){
+    flag=false;
+  }
+  console.log("Login Status: "+flag);
+  return flag;
 }
 
-}
+// function login(){
+//   var form='';
+//   var username='';
+//   var password='';
+//   var usernameValue = username.value;
+//   var passwordValue = password.value;
+//
+// if(username.value!== ''
+//  && password.value!== ''){
+//    username.value='';
+//    password.value='';
+// }
+// else  if(username.value=="Admin" && password.value=="knzulu"){
+//     routeDisplay.innerHTML=update;
+//
+//   }
+//   else{
+//     alert("error password or username")
+// }
+//
+// }
 
 function addExisting(motion){
   var list=[];
