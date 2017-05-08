@@ -1,10 +1,10 @@
-var transportTemplate=document.querySelector('#transportTemplate');
-var timeTable=document.querySelector('.timeTable');
 var DepartPlace=document.querySelector('#DepartPlace');
+var transportTemplate=document.querySelector('#transportTemplate');
 var DepartTime=document.querySelector('#DepartTime');
 var ArrivalPlace=document.querySelector('#ArrivalPlace');
 var ArrivalTime=document.querySelector('#ArrivalTime');
 var DepartStationTemp=document.querySelector('.DepartStationTemp');
+var timeTable=document.querySelector('.timeTable');
 var DepartTimeTemp=document.querySelector('.DepartTimeTemp');
 var ArrivalStationTemp=document.querySelector('.ArrivalStationTemp');
 var ArrivalTimeTemp=document.querySelector('.ArrivalTimeTemp');
@@ -20,6 +20,9 @@ var UpdateTime=document.querySelector('.UpdateTime');
 var dropDown=document.querySelector('.dropDown');
 var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
 var loginBtn=document.querySelector('#loginBtn');
+var user=document.querySelector('#user').innerHTML;
+var passwrd=document.querySelector('#passwrd').innerHTML;
+
 
 
 var RouteSearch=[
@@ -107,13 +110,24 @@ var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
 
 loginBtn.addEventListener('click',function(){
   if(validate()){
+    // if(document.querySelector('.user').value!==''){
+    //   user.value='';
+    //
+    // }
+    // if(document.querySelector('.passUseruser').value!==''){
+    //
+    // }
   var result = TempInstance({route:RouteSearch});
+  //   passUseruser.value='';
   routeDisplay.innerHTML= result;
-}
 
+}
 else{
 ("error password or username")
 }
+document.querySelector('#user').value = '';
+document.querySelector('#passwrd').value = '';
+
 });
 
 
@@ -170,7 +184,7 @@ for(var i=0;i<RouteSearch.length;i++){
   }
   if(selectedDepTime.value==routes.DepartTime){
     routeList.push(routes);
-    
+
   }
 if(selectedDepStation.value==routes.DepartStation){
   routeList.push(routes);
@@ -197,19 +211,36 @@ if(selectedArrTime.value==routes.ArrivalTime){
 function validate(){
   var flag=true;
 
-
-
-  if(document.querySelector('#userid').value!=='Admin'){
+  // const text=input.value;
+  // input.value='';
+  if(document.querySelector('#user').value!=='Admin'){
+    // document.querySelector('.user').value=''
 
     flag=false;
   }
-  if(document.querySelector('#passwrd').value!=='123'){
+    if(document.querySelector('#passwrd').value!=='123'){
+    // document.querySelector('.passUser').value=''
+
     flag=false;
   }
+
 
   console.log("Login Status: "+flag);
+  // console.log(passwrd);
+  // console.log(user);
   return flag;
 }
+
+
+//
+// function Clearform(){
+//    // Get the first form with the name
+//    // Hopefully there is only one, but there are more, select the correct index
+//    var form = document.getElementsByName('Login')[0];
+//    form.validate(); // Submit
+//    form.reset();  // Reset
+//    return false; // Prevent page refresh
+// }
 
 
 // function addExisting(motion){
