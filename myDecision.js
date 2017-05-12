@@ -106,9 +106,15 @@ var UpdateTimeTemp=document.querySelector('#UpdateTimeTemp');
 var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
 
 loginBtn.addEventListener('click',function(){
-  validate()
+  if(validate()){
   var result = TempInstance({route:RouteSearch});
   routeDisplay.innerHTML= result;
+}
+else{
+  alert("error password or username");
+}
+document.querySelector('#user').value = '';
+document.querySelector('#passwrd').value = '';
 });
 
 
@@ -123,12 +129,12 @@ for(var i=0;i<RouteSearch.length;i++){
   var updated = false;
    if(RouteSearch[i].DepartStation == document.querySelector('#DepartPlace').value && RouteSearch[i].ArrivalStation == document.querySelector('#ArrivalPlace').value){
           RouteSearch[i].DepartTime = document.querySelector('#DepartTime').value;
-          RouteSearch[i].ArrivalTime = document.querySelector('#ArrivalTime').value
+          RouteSearch[i].ArrivalTime = document.querySelector('#ArrivalTime').value;
           updated = true;
     }
 
 }
-if(updated == false){
+if(updated == true){
   RouteSearch.push({
     DepartStation:document.querySelector('#DepartPlace').value,
     DepartTime:document.querySelector('#DepartTime').value,
@@ -136,10 +142,6 @@ if(updated == false){
     ArrivalTime:document.querySelector('#ArrivalTime').value,
   });
 }
-
-
-
-// addExisting(RouteSearch);
 
 var result = TempInstance({route:RouteSearch});
 routeDisplay.innerHTML = result;
@@ -161,6 +163,22 @@ for(var i=0;i<RouteSearch.length;i++){
     && selectedDepTime.value==routes.DepartTime){
     routeList.push(routes);
   }
+if(selectedDepStation.value==routes.DepartStation){
+  routeList.push(routes);
+}
+if(selectedDepTime.value==routes.DepartTime){
+  routeList.push(routes);
+}
+if(selectedArrStation.value==routes.ArrivalStation){
+  routeList.push(routes);
+}
+if(selectedArrTime.value==routes.ArrivalTime){
+  routeList.push(routes);
+}
+
+
+
+
 }
   // var product=InstanceTemp({data:routeList});
   // document.querySelector('.routeDisplay').innerHTML=product;
@@ -171,7 +189,7 @@ for(var i=0;i<RouteSearch.length;i++){
 
 function validate(){
   var flag=true;
-  if(document.querySelector('#userid').value!=='Admin'){
+  if(document.querySelector('#user').value!=='Admin'){
 
     flag=false;
   }
