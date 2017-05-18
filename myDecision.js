@@ -1,10 +1,10 @@
-var transportTemplate=document.querySelector('#transportTemplate');
-var timeTable=document.querySelector('.timeTable');
 var DepartPlace=document.querySelector('#DepartPlace');
+var transportTemplate=document.querySelector('#transportTemplate');
 var DepartTime=document.querySelector('#DepartTime');
 var ArrivalPlace=document.querySelector('#ArrivalPlace');
 var ArrivalTime=document.querySelector('#ArrivalTime');
 var DepartStationTemp=document.querySelector('.DepartStationTemp');
+var timeTable=document.querySelector('.timeTable');
 var DepartTimeTemp=document.querySelector('.DepartTimeTemp');
 var ArrivalStationTemp=document.querySelector('.ArrivalStationTemp');
 var ArrivalTimeTemp=document.querySelector('.ArrivalTimeTemp');
@@ -20,6 +20,9 @@ var UpdateTime=document.querySelector('.UpdateTime');
 var dropDown=document.querySelector('.dropDown');
 var TemplateInstance = Handlebars.compile(transportTemplate.innerHTML);
 var loginBtn=document.querySelector('#loginBtn');
+var user=document.querySelector('#user').innerHTML;
+var passwrd=document.querySelector('#passwrd').innerHTML;
+
 
 
 var RouteSearch=[
@@ -108,14 +111,18 @@ var TempInstance = Handlebars.compile(UpdateTimeTemp.innerHTML);
 loginBtn.addEventListener('click',function(){
   if(validate()){
   var result = TempInstance({route:RouteSearch});
+  //   passUseruser.value='';
   routeDisplay.innerHTML= result;
+
 }
 else{
   alert("error password or username");
 }
 document.querySelector('#user').value = '';
-document.querySelector('#passwrd').value = '';
+document.querySelector('#passwrd').value ='';
+
 });
+
 
 
 var dropDwnTemp=document.querySelector('#dropDwnTemp');
@@ -162,10 +169,17 @@ for(var i=0;i<RouteSearch.length;i++){
   if(selectedDepStation.value==routes.DepartStation
     && selectedDepTime.value==routes.DepartTime){
     routeList.push(routes);
+
+
+  }
+  if(selectedDepTime.value==routes.DepartTime){
+    routeList.push(routes);
+
   }
 if(selectedDepStation.value==routes.DepartStation){
   routeList.push(routes);
 }
+
 if(selectedDepTime.value==routes.DepartTime){
   routeList.push(routes);
 }
@@ -179,18 +193,16 @@ if(selectedArrTime.value==routes.ArrivalTime){
 
 
 
-}
   // var product=InstanceTemp({data:routeList});
   // document.querySelector('.routeDisplay').innerHTML=product;
   var results = TemplateInstance({route:routeList});
   routeDisplay.innerHTML= results;
 }
-
+}
 
 function validate(){
   var flag=true;
   if(document.querySelector('#user').value!=='Admin'){
-
     flag=false;
   }
   if(document.querySelector('#passwrd').value!=='123'){
@@ -221,21 +233,58 @@ function validate(){
 // }
 //
 // }
+// =======
+//
+// function validate(){
+//   var flag=true;
+//
+//   // const text=input.value;
+//   // input.value='';
+//   if(document.querySelector('#user').value!=='Admin'){
+//     // document.querySelector('.user').value=''
+//
+//     flag=false;
+//   }
+//     if(document.querySelector('#passwrd').value!=='123'){
+//     // document.querySelector('.passUser').value=''
+// >>>>>>> 06b5cfbeebb4df16dae1472b5a59c99280de3906
+//
+//     flag=false;
+//   }
+//
+//
+//   console.log("Login Status: "+flag);
+//   // console.log(passwrd);
+//   // console.log(user);
+//   return flag;
+// }
 
-function addExisting(motion){
-  var list=[];
-  var listMap={};
-  for(var i=0;i<motion;i++){
-    var array=motion[i];
-    if(listMap[array.DepartTime]===undefined){
-      listMap[array.DepartTime]=array.DepartTime;
-      list.push(array.DepartTime);
-    }
-    var result = TempInstance({route:list});
-    routeDisplay.innerHTML = result;
-  }
-  addExisting(RouteSearch);
-}
+
+//
+// function Clearform(){
+//    // Get the first form with the name
+//    // Hopefully there is only one, but there are more, select the correct index
+//    var form = document.getElementsByName('Login')[0];
+//    form.validate(); // Submit
+//    form.reset();  // Reset
+//    return false; // Prevent page refresh
+// }
+
+
+// function addExisting(motion){
+//   var list=[];
+//   var listMap={};
+//   for(var i=0;i<motion;i++){
+//     var array=motion[i];
+//     if(listMap[array.DepartTime]===undefined){
+//       listMap[array.DepartTime]=array.DepartTime;
+//       list.push(array.DepartTime);
+//     }
+//     var result = TempInstance({route:list});
+//     routeDisplay.innerHTML = result;
+//   }
+//   addExisting(RouteSearch);
+// }
 
 
 
